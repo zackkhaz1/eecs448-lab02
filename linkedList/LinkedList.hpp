@@ -118,8 +118,9 @@ bool LinkedList<T>::removeBack()
 	/** TODO
 		Fix this method
 	*/
-
+	m_size--;
 	return(isRemoved);
+
 }
 
 template <typename T>
