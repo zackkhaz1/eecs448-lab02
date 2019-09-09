@@ -72,8 +72,6 @@ std::vector<T> LinkedList<T>::toVector() const
 	}
 
 	return(vec);
-
-
 }
 
 template <typename T>
@@ -111,24 +109,24 @@ void LinkedList<T>::addFront(T value)
 template <typename T>
 bool LinkedList<T>::removeBack()
 {
-	bool isRemoved = false;
+	bool isRemoved = true;
 
 	if(isEmpty())
 		{
+			isRemoved = false;
 			return(isRemoved);
 		}
 
-	Node<T>* temp = m_front;
 	Node<T>* lastNode = nullptr;
-	Node<T>* secondintoLast = nullptr;
+	Node<T>* secondintoLast = m_front;
 
-	while(temp != nullptr)
+
+	while((secondintoLast->getNext())->getNext() != nullptr)
 		{
-			temp = temp->getNext();
+			secondintoLast = secondintoLast->getNext();
 		}
-
-	delete temp;
-
+		delete secondintoLast->getNext();
+		secondintoLast->setNext(nullptr);
 	m_size--;
 	return(isRemoved);
 }
